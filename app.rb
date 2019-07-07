@@ -43,7 +43,6 @@ class App < Sinatra::Base
 
     if session[:id] == 1
       # "Session ID set. It's currently set to #{session[:id]}."
-      session.clear
       redirect '/fetch_session_id'
     else
       "Session ID has not been set!"
@@ -56,6 +55,7 @@ class App < Sinatra::Base
 
   get '/logout' do
     #clear session hash here
+    session.clear
     "Session has now been cleared. session content: #{session.inspect}. Continue on to the '/finish' line!"
   end
 
